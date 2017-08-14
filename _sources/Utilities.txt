@@ -1,0 +1,156 @@
+Utilities
+===============================
+
+Dicom Convert
+-------------------------------
+    
+* **operation: convert**
+    * **parallel workers**: select how many workers to start a parallel work. The default is 0.
+    * **convert to 4d**: select to convert data to 4D format, otherwise to 3D.
+    * **id index**: identifier to find unique string for each subject.
+    * **input dirs**: directories can be input either using a .txt file or spm select window.
+    * **delete first N timepoints**: delete heading fMRI volumes.
+    * **N**: number of the heading timepoints to be deleted, the default is 10.
+    * **filetype**: wildcard to search wanted fMRI data.
+    * **out dir**: output directory for saving results.
+    
+* **operation: delete**
+    * **id index**: identifier to find unique string for each subject
+    * **filetype**: files in the filetype will be searched in input directories.
+    * **4D nifti files**: if the input data is 4D, check this item. Otherwise uncheck.
+    * **input dirs**: directories can be input either using a .txt file or spm select window.
+    * **delete first N timepoints**: delete heading fMRI volumes.
+    * **output fn**: output filename.
+    * **output to another directory**: output data to another directory
+    
+- **Buttons**:
+    - **S**: Save parameters of the current panel to a *.mat file. The *.mat can be further loaded for the panel or be used in a script processing.
+    - **L**: Load parameters from *.mat for the current panel.
+    - **?**: Help information.
+    
+
+Head Motion Estimate
+---------------------------------
+    
+* **id index**: identifier to find unique string for each subject
+* **filetype**: files in the filetype will be searched in input directories.
+* **input dirs**: directories can be input either using a .txt file or spm select window.
+* **out dir**: output directory for saving results.
+    
+- **Meaning of results**:
+    - **max-abstranslation(mm)**: maximum translation. Estimated as the max absolute value of the first 3 columns from rp*.txt
+    - **max-absrotation(deg)**: maximum rotation. Estimated as the max absolute value of the last 3 columns from rp*.txt multiple by 180/pi.
+    
+    - **From van Dijk et al., Neuroimage 2012**
+        - **max-motion-Dijk(mm)**: maximum root-mean-square of translation.
+        - **mean-motion-Dijk(mm)**: mean root-mean-square of translation.
+        - **num-movements-Dijk(>0.1mm)**: number of micro-movement. The number of root-mean-square of translation that is greater than 0.1mm
+        - **mean-rotation-Dijk(deg)**: mean absolute Euler angle
+    
+    - **From Power et al., Neuroimage 2012**
+        - **mean-FD(mm)**: frame-wise displacement. Estimated using translation and rotation.
+        - **num-FD>0.5**: number of frame-wise displacement that is greater than 0.5mm.
+    
+* **Buttons**:
+    * **S**: Save parameters of the current panel to a *.mat file. The *.mat can be further loaded for the panel or be used in a script processing.
+    * **L**: Load parameters from *.mat for the current panel.
+    * **?**: Help information.
+
+
+
+Visual Check
+---------------------------
+    
+*The function calls SPM Check Reg to visualize input volume, a keyboard callback is added to enable left/right and up/down to switch timepoint and subjects.*
+    
+* **start subject**: the volume to start with.
+* **id index**: identifier to find unique string for each subject
+* **filetype**: files in the filetype will be searched in input directories.
+* **4D nifti files**: if the input data is 4D, check this item. Otherwise uncheck.
+* **input dirs**: directories can be input either using a .txt file or spm select window.
+    
+- **Keyboard Operation**:
+    - **Up/Down**:last/next timepoint of the same subject.
+    - **Left/Right**:same timepoint of last/next subject.
+    
+* **Buttons**:
+    * **S**: Save parameters of the current panel to a *.mat file. The *.mat can be further loaded for the panel or be used in a script processing.
+    * **L**: Load parameters from *.mat for the current panel.
+    * **?**: Help information.
+    
+
+
+TSNR (Temporal Signal to Noise Ratio)
+---------------------------------------------------
+    
+* **mask**: could be whole brain mask or gray matter mask.
+* **id index**: identifier to find unique string for each subject
+* **filetype**: files in the filetype will be searched in input directories.
+* **4D nifti files**: if the input data is 4D, check this item. Otherwise uncheck.
+* **input dirs**: directories can be input either using a .txt file or spm select window.
+* **out dir**: output directory for saving results.
+    
+- **Buttons**:
+    - **S**: Save parameters of the current panel to a *.mat file. The *.mat can be further loaded for the panel or be used in a script processing.
+    - **L**: Load parameters from *.mat for the current panel.
+    - **?**: Help information.
+    
+
+
+ROI coordinates
+-------------------------
+    
+*The current function extracts coordinates for each cluster and output to a table.*
+    
+* **input type**: seperated binary clusters or labeled clusters
+* **mask***: optional. mask to do AND operation with.
+* **cluster size**: threshold of cluster size.
+* **roi file**: input ROI file
+* **roi info***: optional. two columns of information for each labeled cluster in a *.csv file. For example::
+
+    1,SFG
+    2,MFG
+    3,IFG
+    
+* **out dir**: output directory for saving results.
+    
+- **Buttons**:
+    - **S**: Save parameters of the current panel to a *.mat file. The *.mat can be further loaded for the panel or be used in a script processing.
+    - **L**: Load parameters from *.mat for the current panel.
+    - **?**: Help information.
+
+
+Extract Value
+--------------------------------
+
+* **data: matrix**
+    * **symmetric matrix**: check to extract the upper right matrix's elements, uncheck to extract all elements
+    * **corr mask**: e.g. a matrix mask used to find significant links instead of all links
+    * **roi info***: a csv with at least one column start with "label"
+    * **id index**: identifier to find unique string for each subject
+    * **filetype**: filetype
+    * **data dir**: Input directories of matrices.
+	
+	
+* **data: volume**
+    * **roi file**: ROI file used for extracting mean intensity in each roi tagged by number.
+    * **roi info**: labels of tagged ROIs. (optional)
+    * **mask**: could be whole brain mask or gray matter mask.
+    * **id index**: identifier to find unique string for each subject
+    * **filetype**: files in the filetype will be searched in input directories.
+    * **4D nifti files**: if the input data is 4D, check this item. Otherwise uncheck.
+    * **input dirs**: directories can be input either using a .txt file or spm select window.).
+	
+* **string removal***: optional. remove partial string from string parsed by id index.
+* **output as**: (only works for data type 'matrix') choose to output data matrix as ASCII(can be edited with text reader) or binary(more hard drive friendly with large matrix). if binary is chosen, you need to handle the matrix by::
+
+    fid = fopen('brant_extract_links.txt', 'rt');
+    outmat = fread(fid, sizeofmat, 'single');
+    fclose(fid);
+    
+* **out dir**: output directory for saving results.
+    
+- **Buttons**:
+    - **S**: Save parameters of the current panel to a *.mat file. The *.mat can be further loaded for the panel or be used in a script processing.
+    - **L**: Load parameters from *.mat for the current panel.
+    - **?**: Help information.
