@@ -103,7 +103,7 @@ What can I Do When an Error Occurs
    fig.3 error during preprocessing
    
 * Reason: TR(s) in Preprocessing is zero.
-* Solution: Set tr(s) to a legal value.
+* Solution: Set tr(s) in *Silce Timing* to a legal value.
 
 4.
 
