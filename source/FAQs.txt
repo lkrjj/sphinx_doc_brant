@@ -75,7 +75,7 @@ What can I Do When an Error Occurs
 
 1. 
 
-.. figure:: _images/faqs_error_2.png
+.. figure:: _images/faqs_error_new_2.png
    :align: center
    
    fig.1 error during DICOM Convert
@@ -87,7 +87,7 @@ What can I Do When an Error Occurs
 
 2.
 
-.. figure:: _images/faqs_error_1.png
+.. figure:: _images/faqs_error_new_1.png
    :align: center
    
    fig.2 error after preprocessing
@@ -97,7 +97,7 @@ What can I Do When an Error Occurs
 
 3.
 
-.. figure:: _images/faqs_error_5.png
+.. figure:: _images/faqs_error_new_5.png
    :align: center
    
    fig.3 error during preprocessing
@@ -107,7 +107,7 @@ What can I Do When an Error Occurs
 
 4.
 
-.. figure:: _images/faqs_error_3.png
+.. figure:: _images/faqs_error_new_3.png
    :align: center
    
    fig.4 error during STAT
@@ -117,7 +117,7 @@ What can I Do When an Error Occurs
 
 5. 
 
-.. figure:: _images/faqs_error_4.png
+.. figure:: _images/faqs_error_new_4.png
    :align: center
    
    fig.5 error after DICOM Convert
