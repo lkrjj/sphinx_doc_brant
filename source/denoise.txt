@@ -76,7 +76,7 @@ Denoise
 .. _label-reference:
     
 * **References**:
-1. Power, J. D., Mitra, A., Laumann, T. O., Snyder, A. Z., Schlaggar, B. L., & Petersen, S. E. (2014). Methods to detect, characterize, and remove motion artifact in resting state fmri. *Neuroimage*, 84(1), 320-341.
+1. Power, J. D., Mitra, A., Laumann, T. O., Snyder, A. Z., Schlaggar, B. L., & Petersen, S. E. (2014). Methods to detect, characterize, and remove motion artifact in resting state fMRI. *Neuroimage*, 84(1), 320-341.
 
 
 
@@ -91,7 +91,7 @@ Denoise
     - `Denoise`_
     - `Smooth`_
 
-.. _`Preprocess Modules`: Preprocess_modules.html
+.. _`Preprocess Modules`: Preprocess_Modules.html
 .. _`Slice Timing`: slice_timing.html
 .. _`Realign`: realign.html
 .. _`Coregister (optional)`: coregister.html
